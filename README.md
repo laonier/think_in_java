@@ -1,2 +1,2 @@
 # think_in_java
-java编程思想随手练习
+java编程思想随手练习~
