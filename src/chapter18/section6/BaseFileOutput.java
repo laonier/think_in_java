@@ -4,9 +4,9 @@ import java.io.*;
 
 public class BaseFileOutput {
     public static void main(String[] args) {
-        String result = "./src/chapter18/section6/result.out";
+        String result = "./src/chapter18/section6/file/result.out";
         try {
-            String file = "./src/chapter18/section6/linefeed.txt";
+            String file = "./src/chapter18/section6/file/linefeed.txt";
             BufferedReader reader = new BufferedReader(new FileReader(file));
             PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(result)));
             String buf;
