@@ -1,3 +1,5 @@
+package common;
+
 import java.io.UnsupportedEncodingException;
 
 public class CharByteAndChinese {
