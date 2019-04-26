@@ -9,12 +9,19 @@ import java.nio.channels.FileChannel;
 public class GetChannel {
     public static void main(String[] args) throws IOException {
         String filename = Constant.PATH_CHAPTER18_SECTION10 + "file/file_channel.txt";
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
-//        FileChannel fc = new FileOutputStream(new File(filename).getAbsoluteFile()).getChannel();
-        for (int i = 0; i < 1024; i++) {
-            writer.write("a b c d ".toCharArray());
+        FileChannel fc = new FileOutputStream(new File(filename).getAbsoluteFile()).getChannel();
+        fc.write(ByteBuffer.wrap("something ".getBytes()));
+        fc.close();
+        fc = new RandomAccessFile(new File(filename).getAbsoluteFile(), "rw").getChannel();
+        fc.write(ByteBuffer.wrap("something more".getBytes()));
+        fc.close();
+        fc = new FileInputStream(new File(filename).getAbsoluteFile()).getChannel();
+        ByteBuffer bb = ByteBuffer.allocate(10);
+        while ((fc.read(bb)) != -1) {
+            bb.flip();
+            while (bb.hasRemaining()) {
+                System.out.println((char)bb.get());
+            }
         }
-        writer.close();
-        System.out.println(new File(filename).length()/1024);
     }
 }
